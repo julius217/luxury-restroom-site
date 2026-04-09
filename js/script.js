@@ -121,17 +121,36 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (isValid) {
-        // In production, you'd send form data to a server here.
-        // For now, show the success message.
-        form.style.display = "none";
-        if (success) {
-          success.classList.add("active");
-        }
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = "Sending...";
+        submitBtn.disabled = true;
 
-        // Scroll to success message
-        window.scrollTo({
-          top: (success || form).offsetTop - 120,
-          behavior: "smooth"
+        const formData = new FormData(form);
+
+        fetch("https://formspree.io/f/mgopbvqo", {
+          method: "POST",
+          body: formData,
+          headers: { "Accept": "application/json" }
+        })
+        .then(response => {
+          if (response.ok) {
+            form.style.display = "none";
+            if (success) {
+              success.classList.add("active");
+            }
+            window.scrollTo({
+              top: (success || form).offsetTop - 120,
+              behavior: "smooth"
+            });
+          } else {
+            throw new Error("Form submission failed");
+          }
+        })
+        .catch(() => {
+          alert("Something went wrong. Please try again or call us directly.");
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
         });
       } else {
         // Scroll to first error
