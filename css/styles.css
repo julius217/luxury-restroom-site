@@ -1,5 +1,5 @@
 /* ========================================
-   LuxLav Rentals — Luxury Restroom Website
+   LuxLoo — Luxury Restroom Website
    Bold & Luxurious Theme
    ======================================== */
 
@@ -13,12 +13,12 @@
 }
 
 :root {
-  --bg-dark: #0d0d0d;
-  --bg-card: #1a1a1a;
-  --bg-card-hover: #2a2a2a;
-  --gold: #c9a84c;
-  --gold-light: #d4af37;
-  --gold-glow: rgba(201, 168, 76, 0.4);
+  --bg-dark: #081328;
+  --bg-card: #0F1E3B;
+  --bg-card-hover: #162A4F;
+  --gold: #F3CA62;
+  --gold-light: #F6D57E;
+  --gold-glow: rgba(243, 202, 98, 0.4);
   --white: #f5f5f5;
   --gray: #aaaaaa;
   --gray-dark: #555555;
@@ -152,10 +152,10 @@ h4 { font-size: 1.2rem; }
   left: 0;
   width: 100%;
   height: var(--nav-height);
-  background: rgba(13, 13, 13, 0.95);
+  background: rgba(8, 19, 40, 0.95);
   backdrop-filter: blur(10px);
   z-index: 1000;
-  border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+  border-bottom: 1px solid rgba(243, 202, 98, 0.15);
 }
 
 .navbar .container {
@@ -166,11 +166,21 @@ h4 { font-size: 1.2rem; }
 }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
+  height: 100%;
   font-family: var(--font-heading);
   font-size: 1.6rem;
   color: var(--gold);
   font-weight: 700;
   letter-spacing: 2px;
+}
+
+.nav-logo img {
+  height: 60px;
+  width: auto;
+  display: block;
+  border-radius: 4px;
 }
 
 .nav-links {
@@ -270,9 +280,9 @@ h4 { font-size: 1.2rem; }
   padding-top: var(--nav-height);
   background: linear-gradient(
     135deg,
-    rgba(13, 13, 13, 0.97) 0%,
-    rgba(26, 26, 26, 0.95) 50%,
-    rgba(13, 13, 13, 0.97) 100%
+    rgba(8, 19, 40, 0.97) 0%,
+    rgba(15, 30, 59, 0.95) 50%,
+    rgba(8, 19, 40, 0.97) 100%
   );
   position: relative;
   overflow: hidden;
@@ -287,7 +297,7 @@ h4 { font-size: 1.2rem; }
   height: 200%;
   background: radial-gradient(
     ellipse at center,
-    rgba(201, 168, 76, 0.03) 0%,
+    rgba(243, 202, 98, 0.03) 0%,
     transparent 70%
   );
   animation: heroGlow 8s ease-in-out infinite alternate;
@@ -350,7 +360,7 @@ h4 { font-size: 1.2rem; }
   text-align: center;
   padding: 40px 24px;
   background: var(--bg-card);
-  border: 1px solid rgba(201, 168, 76, 0.1);
+  border: 1px solid rgba(243, 202, 98, 0.1);
   border-radius: 8px;
   transition: all 0.3s;
 }
@@ -458,7 +468,7 @@ h4 { font-size: 1.2rem; }
 
 .unit-card {
   background: var(--bg-card);
-  border: 1px solid rgba(201, 168, 76, 0.12);
+  border: 1px solid rgba(243, 202, 98, 0.12);
   border-radius: 8px;
   overflow: hidden;
   transition: all 0.3s;
@@ -520,6 +530,116 @@ h4 { font-size: 1.2rem; }
 }
 
 /* ========================================
+   TRAILER SHOWCASE / SLIDESHOW
+   ======================================== */
+.trailer-showcase {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.slideshow {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(243, 202, 98, 0.15);
+  background: var(--bg-card);
+}
+
+.slideshow-track {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slideshow-slide {
+  min-width: 100%;
+  aspect-ratio: 4 / 3;
+  background: var(--bg-card-hover);
+}
+
+.slideshow-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slideshow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(8, 19, 40, 0.7);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-size: 1.6rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  line-height: 1;
+  padding: 0;
+  z-index: 2;
+  font-family: inherit;
+}
+
+.slideshow-btn:hover {
+  background: var(--gold);
+  color: var(--bg-dark);
+  box-shadow: 0 0 15px var(--gold-glow);
+}
+
+.slideshow-prev { left: 16px; }
+.slideshow-next { right: 16px; }
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  z-index: 1;
+}
+
+.slideshow-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(245, 245, 245, 0.4);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.slideshow-dot.active {
+  background: var(--gold);
+  width: 24px;
+  border-radius: 4px;
+}
+
+.trailer-details h3 {
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.trailer-details .unit-price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: var(--white);
+}
+
+.trailer-details .unit-features {
+  margin-bottom: 1.75rem;
+}
+
+/* ========================================
    TESTIMONIALS
    ======================================== */
 .testimonials-grid {
@@ -530,7 +650,7 @@ h4 { font-size: 1.2rem; }
 
 .testimonial-card {
   background: var(--bg-card);
-  border: 1px solid rgba(201, 168, 76, 0.1);
+  border: 1px solid rgba(243, 202, 98, 0.1);
   border-radius: 8px;
   padding: 36px;
   position: relative;
@@ -581,7 +701,7 @@ h4 { font-size: 1.2rem; }
 .gallery-item {
   height: 280px;
   background: var(--bg-card-hover);
-  border: 1px solid rgba(201, 168, 76, 0.1);
+  border: 1px solid rgba(243, 202, 98, 0.1);
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
@@ -679,7 +799,7 @@ h4 { font-size: 1.2rem; }
   width: 100%;
   padding: 14px 18px;
   background: var(--bg-card);
-  border: 1px solid rgba(201, 168, 76, 0.2);
+  border: 1px solid rgba(243, 202, 98, 0.2);
   border-radius: 4px;
   color: var(--white);
   font-family: var(--font-body);
@@ -692,7 +812,7 @@ h4 { font-size: 1.2rem; }
 .form-group select:focus {
   outline: none;
   border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.1);
+  box-shadow: 0 0 0 3px rgba(243, 202, 98, 0.1);
 }
 
 .form-group textarea {
@@ -782,7 +902,7 @@ h4 { font-size: 1.2rem; }
   width: 100%;
   height: 300px;
   background: var(--bg-card-hover);
-  border: 1px solid rgba(201, 168, 76, 0.15);
+  border: 1px solid rgba(243, 202, 98, 0.15);
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -799,10 +919,10 @@ h4 { font-size: 1.2rem; }
   text-align: center;
   background: linear-gradient(
     180deg,
-    rgba(26, 26, 26, 1) 0%,
-    rgba(13, 13, 13, 1) 100%
+    rgba(15, 30, 59, 1) 0%,
+    rgba(8, 19, 40, 1) 100%
   );
-  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+  border-bottom: 1px solid rgba(243, 202, 98, 0.1);
 }
 
 .page-header h1 {
@@ -819,7 +939,7 @@ h4 { font-size: 1.2rem; }
    ======================================== */
 .footer {
   background: var(--bg-card);
-  border-top: 1px solid rgba(201, 168, 76, 0.15);
+  border-top: 1px solid rgba(243, 202, 98, 0.15);
   padding: 60px 0 30px;
 }
 
@@ -837,6 +957,13 @@ h4 { font-size: 1.2rem; }
   font-weight: 700;
   margin-bottom: 1rem;
   display: block;
+}
+
+.footer-brand img {
+  height: 85px;
+  width: auto;
+  display: block;
+  border-radius: 4px;
 }
 
 .footer-description {
@@ -868,7 +995,7 @@ h4 { font-size: 1.2rem; }
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(201, 168, 76, 0.1);
+  border-top: 1px solid rgba(243, 202, 98, 0.1);
   padding-top: 24px;
   display: flex;
   justify-content: space-between;
@@ -924,10 +1051,10 @@ h4 { font-size: 1.2rem; }
     top: var(--nav-height);
     left: 0;
     width: 100%;
-    background: rgba(13, 13, 13, 0.98);
+    background: rgba(8, 19, 40, 0.98);
     padding: 24px;
     gap: 20px;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    border-bottom: 1px solid rgba(243, 202, 98, 0.15);
   }
 
   .nav-links.active {
@@ -941,9 +1068,20 @@ h4 { font-size: 1.2rem; }
   /* Grids */
   .what-we-do-grid,
   .steps,
-  .units-grid {
+  .units-grid,
+  .trailer-showcase {
     grid-template-columns: 1fr;
+    gap: 32px;
   }
+
+  .slideshow-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.3rem;
+  }
+
+  .slideshow-prev { left: 10px; }
+  .slideshow-next { right: 10px; }
 
   .features-grid {
     grid-template-columns: repeat(2, 1fr);

@@ -1,5 +1,5 @@
 /* ========================================
-   LuxLav Rentals — JavaScript
+   LuxLoo — JavaScript
    ======================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -28,12 +28,56 @@ document.addEventListener("DOMContentLoaded", () => {
   if (navbar) {
     window.addEventListener("scroll", () => {
       if (window.scrollY > 50) {
-        navbar.style.borderBottomColor = "rgba(201, 168, 76, 0.3)";
+        navbar.style.borderBottomColor = "rgba(243, 202, 98, 0.3)";
       } else {
-        navbar.style.borderBottomColor = "rgba(201, 168, 76, 0.15)";
+        navbar.style.borderBottomColor = "rgba(243, 202, 98, 0.15)";
       }
     });
   }
+
+  // ---- Slideshow ----
+  document.querySelectorAll("[data-slideshow]").forEach(slideshow => {
+    const track = slideshow.querySelector(".slideshow-track");
+    const slides = slideshow.querySelectorAll(".slideshow-slide");
+    const prevBtn = slideshow.querySelector(".slideshow-prev");
+    const nextBtn = slideshow.querySelector(".slideshow-next");
+    const dotsContainer = slideshow.querySelector(".slideshow-dots");
+
+    if (!track || !slides.length) return;
+
+    let currentIndex = 0;
+    let autoplayTimer;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.className = "slideshow-dot";
+      dot.setAttribute("aria-label", `Go to photo ${i + 1}`);
+      dot.addEventListener("click", () => { goTo(i); resetAutoplay(); });
+      dotsContainer.appendChild(dot);
+    });
+
+    const dots = dotsContainer.querySelectorAll(".slideshow-dot");
+
+    function goTo(index) {
+      currentIndex = (index + slides.length) % slides.length;
+      track.style.transform = `translateX(-${currentIndex * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle("active", i === currentIndex));
+    }
+
+    function resetAutoplay() {
+      clearInterval(autoplayTimer);
+      autoplayTimer = setInterval(() => goTo(currentIndex + 1), 6000);
+    }
+
+    if (prevBtn) prevBtn.addEventListener("click", () => { goTo(currentIndex - 1); resetAutoplay(); });
+    if (nextBtn) nextBtn.addEventListener("click", () => { goTo(currentIndex + 1); resetAutoplay(); });
+
+    slideshow.addEventListener("mouseenter", () => clearInterval(autoplayTimer));
+    slideshow.addEventListener("mouseleave", resetAutoplay);
+
+    goTo(0);
+    resetAutoplay();
+  });
 
   // ---- Gallery Lightbox ----
   const galleryItems = document.querySelectorAll(".gallery-item");
