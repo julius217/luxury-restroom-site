@@ -235,7 +235,7 @@
             <span data-value="balance">$0</span>
           </div>
           <p class="price-note">
-            Your $350 deposit reserves your event date. The remaining balance is invoiced separately and due 7 days before your event. Attendant service, if selected, will be quoted by our team and added to your final invoice.
+            Your $350 Reservation Retainer secures your event date. The remaining balance is due at delivery on the day of your event. Attendant service, if selected, will be quoted by our team and added to your final invoice. Reservation Retainer is refundable up to two (2) weeks before the rental date &mdash; see <a href="terms.html" target="_blank" style="color:var(--gold);">Terms &amp; Conditions</a> for full details.
           </p>
         </div>
 
@@ -243,6 +243,11 @@
         <input type="hidden" name="_subject" value="New LuxLoo Booking Request">
         <input type="hidden" name="quote_total" id="hidden-total">
         <input type="hidden" name="quote_breakdown" id="hidden-breakdown">
+
+        <label class="agreement-check" id="agreement-wrapper">
+          <input type="checkbox" id="booking-agreement" name="agreement" required>
+          <span>I have read and agree to the <a href="terms.html" target="_blank">Terms &amp; Conditions</a>, including the cancellation policy and damage responsibility.</span>
+        </label>
 
         <button type="submit" class="btn btn-primary" style="width:100%; text-align:center;" id="reserve-btn" disabled>
           Reserve Your Date — Pay $350 Deposit
@@ -299,7 +304,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>&copy; 2026 LuxLoo. All rights reserved.</p>
+        <p>&copy; 2026 LuxLoo. All rights reserved. &nbsp;|&nbsp; <a href="terms.html">Terms &amp; Conditions</a></p>
         <div class="social-links">
           <a href="#" aria-label="Facebook">FB</a>
           <a href="#" aria-label="Instagram">IG</a>
@@ -341,6 +346,9 @@
       const DEPOSIT = 350;
       const fmt = (n) => "$" + n.toLocaleString("en-US");
 
+      const agreementCheck = document.getElementById("booking-agreement");
+      const agreementWrapper = document.getElementById("agreement-wrapper");
+
       function recalc() {
         const duration = form.querySelector('input[name="duration"]:checked');
         const power = form.querySelector('input[name="power"]:checked');
@@ -373,8 +381,8 @@
         hiddenTotal.value = fmt(total);
         hiddenBreakdown.value = lines.join(" | ");
 
-        // Enable button only when all required radio groups are picked
-        reserveBtn.disabled = !(duration && power && water);
+        // Enable button only when all required radio groups are picked AND the agreement is checked
+        reserveBtn.disabled = !(duration && power && water && agreementCheck.checked);
       }
 
       form.addEventListener("change", recalc);
@@ -401,6 +409,14 @@
         ["duration", "power", "water"].forEach(name => {
           if (!form.querySelector(`input[name="${name}"]:checked`)) valid = false;
         });
+
+        // Validate agreement checkbox
+        if (!agreementCheck.checked) {
+          agreementWrapper.classList.add("error");
+          valid = false;
+        } else {
+          agreementWrapper.classList.remove("error");
+        }
 
         if (!valid) {
           const firstError = form.querySelector(".form-group.error");
