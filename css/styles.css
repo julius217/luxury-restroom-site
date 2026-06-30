@@ -278,12 +278,14 @@ h4 { font-size: 1.2rem; }
   justify-content: center;
   text-align: center;
   padding-top: var(--nav-height);
-  background: linear-gradient(
-    135deg,
-    rgba(8, 19, 40, 0.97) 0%,
-    rgba(15, 30, 59, 0.95) 50%,
-    rgba(8, 19, 40, 0.97) 100%
-  );
+  background:
+    linear-gradient(
+      135deg,
+      rgba(8, 19, 40, 0.82) 0%,
+      rgba(15, 30, 59, 0.72) 50%,
+      rgba(8, 19, 40, 0.82) 100%
+    ),
+    url('../images/IMG_6406.JPG') center/cover no-repeat;
   position: relative;
   overflow: hidden;
 }
