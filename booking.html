@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Request a Quote — LuxLoo</title>
-  <meta name="description" content="Request a free quote for luxury portable restroom rental. Tell us about your event and we'll recommend the perfect unit.">
+  <title>Reserve Your Date — LuxLoo</title>
+  <meta name="description" content="Build your luxury portable restroom quote in 60 seconds and reserve your event date with a $350 deposit.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -34,14 +34,14 @@
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">
-      <h1>Request a <span class="gold-text">Quote</span></h1>
-      <p>Tell us about your event and we'll get back to you within 24 hours with a custom quote.</p>
+      <h1>Reserve Your <span class="gold-text">Date</span></h1>
+      <p>Build your quote in 60 seconds. Lock in your event date with a $350 deposit.</p>
     </div>
   </section>
 
-  <!-- Booking Form -->
+  <!-- Booking Calculator -->
   <section class="section">
-    <div class="container" style="max-width:800px;">
+    <div class="container" style="max-width:820px;">
 
       <form id="booking-form" novalidate>
 
@@ -79,13 +79,9 @@
             <select id="booking-type" name="event_type" required>
               <option value="">Select event type</option>
               <option value="wedding">Wedding</option>
-              <option value="birthday">Birthday Party</option>
-              <option value="anniversary">Anniversary</option>
               <option value="corporate">Corporate Event</option>
-              <option value="graduation">Graduation</option>
-              <option value="holiday">Holiday Party</option>
-              <option value="fundraiser">Fundraiser / Gala</option>
-              <option value="other">Other</option>
+              <option value="private-party">Private Party</option>
+              <option value="festival">Festival</option>
             </select>
             <p class="form-error">Please select an event type.</p>
           </div>
@@ -95,12 +91,12 @@
           <label for="booking-guests">Estimated Guest Count *</label>
           <select id="booking-guests" name="guest_count" required>
             <option value="">Select guest count</option>
-            <option value="1-50">1 – 50 guests</option>
-            <option value="51-100">51 – 100 guests</option>
-            <option value="101-150">101 – 150 guests</option>
-            <option value="151-200">151 – 200 guests</option>
-            <option value="201-300">201 – 300 guests</option>
-            <option value="300+">300+ guests</option>
+            <option value="0-50">0 – 50 guests</option>
+            <option value="50-100">50 – 100 guests</option>
+            <option value="100-150">100 – 150 guests</option>
+            <option value="150-200">150 – 200 guests</option>
+            <option value="200-250">200 – 250 guests</option>
+            <option value="250-300">250 – 300 guests</option>
           </select>
           <p class="form-error">Please select a guest count.</p>
         </div>
@@ -111,18 +107,156 @@
           <p class="form-error">Please enter the event location.</p>
         </div>
 
+        <h3 style="color:var(--gold); margin:2.5rem 0 1.5rem; font-size:1.3rem;">Rental Duration *</h3>
+
+        <div class="option-cards" data-group="duration">
+          <label class="option-card">
+            <input type="radio" name="duration" value="4-8hr" data-price="995" required>
+            <span class="option-card-inner">
+              <span class="option-card-title">4 – 8 Hours</span>
+              <span class="option-card-sub">Perfect for half-day events</span>
+              <span class="option-card-price">$995</span>
+            </span>
+          </label>
+          <label class="option-card">
+            <input type="radio" name="duration" value="24hr" data-price="1495" required>
+            <span class="option-card-inner">
+              <span class="option-card-title">24 Hours</span>
+              <span class="option-card-sub">Full single-day event</span>
+              <span class="option-card-price">$1,495</span>
+            </span>
+          </label>
+          <label class="option-card">
+            <input type="radio" name="duration" value="48hr" data-price="1895" required>
+            <span class="option-card-inner">
+              <span class="option-card-title">48 Hours</span>
+              <span class="option-card-sub">Multi-day or setup buffer</span>
+              <span class="option-card-price">$1,895</span>
+            </span>
+          </label>
+        </div>
+        <p class="form-error" id="duration-error">Please select a rental duration.</p>
+
+        <h3 style="color:var(--gold); margin:2.5rem 0 1.5rem; font-size:1.3rem;">On-Site Utilities</h3>
+
         <div class="form-group">
-          <label for="booking-requests">Special Requests or Notes</label>
-          <textarea id="booking-requests" name="special_requests" placeholder="Anything else we should know? (e.g., multiple days, attendant service, ADA requirements)"></textarea>
+          <label>Power Source *</label>
+          <p style="color:var(--gray); font-size:0.85rem; margin-bottom:12px;">Is there a 20-amp electrical outlet within 100 ft of the setup location?</p>
+          <div class="option-cards" data-group="power">
+            <label class="option-card">
+              <input type="radio" name="power" value="yes" data-price="0" required>
+              <span class="option-card-inner">
+                <span class="option-card-title">Yes — Outlet Available</span>
+                <span class="option-card-sub">Your venue has 20A power</span>
+                <span class="option-card-price">No charge</span>
+              </span>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="power" value="no" data-price="165" required>
+              <span class="option-card-inner">
+                <span class="option-card-title">No — We'll Bring a Generator</span>
+                <span class="option-card-sub">Quiet generator + fuel included</span>
+                <span class="option-card-price">+$165</span>
+              </span>
+            </label>
+          </div>
+          <p class="form-error" id="power-error">Please select a power option.</p>
         </div>
 
-        <button type="submit" class="btn btn-primary" style="width:100%; text-align:center;">Submit Quote Request</button>
+        <div class="form-group">
+          <label>Water Supply *</label>
+          <p style="color:var(--gray); font-size:0.85rem; margin-bottom:12px;">Is there a standard water spigot within 100 ft of the setup location?</p>
+          <div class="option-cards" data-group="water">
+            <label class="option-card">
+              <input type="radio" name="water" value="yes" data-price="0" required>
+              <span class="option-card-inner">
+                <span class="option-card-title">Yes — Spigot Available</span>
+                <span class="option-card-sub">Your venue has water access</span>
+                <span class="option-card-price">No charge</span>
+              </span>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="water" value="no" data-price="65" required>
+              <span class="option-card-inner">
+                <span class="option-card-title">No — We'll Bring a Water Tank</span>
+                <span class="option-card-sub">Portable refill tank included</span>
+                <span class="option-card-price">+$65</span>
+              </span>
+            </label>
+          </div>
+          <p class="form-error" id="water-error">Please select a water option.</p>
+        </div>
+
+        <h3 style="color:var(--gold); margin:2.5rem 0 1.5rem; font-size:1.3rem;">Optional Add-Ons</h3>
+
+        <label class="option-card" style="margin-bottom:24px;">
+          <input type="checkbox" name="attendant" value="yes">
+          <span class="option-card-inner">
+            <span class="option-card-title">On-Site Attendant Service</span>
+            <span class="option-card-sub">A dedicated attendant to keep the restroom pristine throughout your event</span>
+            <span class="option-card-price">Quoted separately</span>
+          </span>
+        </label>
+
+        <div class="form-group">
+          <label for="booking-requests">Special Requests or Notes</label>
+          <textarea id="booking-requests" name="special_requests" placeholder="Anything else we should know? (e.g., ADA requirements, setup timing, venue access notes)"></textarea>
+        </div>
+
+        <!-- Live Price Summary -->
+        <div class="price-summary">
+          <h3>Your Quote</h3>
+          <div class="price-line" id="line-base">
+            <span>Base Rental</span>
+            <span data-value="base">—</span>
+          </div>
+          <div class="price-line" id="line-power" style="display:none;">
+            <span>Generator (20A power)</span>
+            <span data-value="power">+$165</span>
+          </div>
+          <div class="price-line" id="line-water" style="display:none;">
+            <span>Portable Water Tank</span>
+            <span data-value="water">+$65</span>
+          </div>
+          <div class="price-line muted" id="line-attendant" style="display:none;">
+            <span>Attendant Service</span>
+            <span>Quoted separately</span>
+          </div>
+          <div class="price-line total">
+            <span>Total Rental</span>
+            <span data-value="total">$0</span>
+          </div>
+          <div class="price-line deposit">
+            <span>Deposit Due Today</span>
+            <span>$350</span>
+          </div>
+          <div class="price-line balance">
+            <span>Remaining balance (due before event)</span>
+            <span data-value="balance">$0</span>
+          </div>
+          <p class="price-note">
+            Your $350 deposit reserves your event date. The remaining balance is invoiced separately and due 7 days before your event. Attendant service, if selected, will be quoted by our team and added to your final invoice.
+          </p>
+        </div>
+
+        <!-- Hidden fields for Formspree (so the email summary includes the price) -->
+        <input type="hidden" name="_subject" value="New LuxLoo Booking Request">
+        <input type="hidden" name="quote_total" id="hidden-total">
+        <input type="hidden" name="quote_breakdown" id="hidden-breakdown">
+
+        <button type="submit" class="btn btn-primary" style="width:100%; text-align:center;" id="reserve-btn" disabled>
+          Reserve Your Date — Pay $350 Deposit
+        </button>
+        <p style="text-align:center; color:var(--gray); font-size:0.8rem; margin-top:12px;">
+          Secure payment processed by Stripe. You'll be redirected after submitting.
+        </p>
 
       </form>
 
       <div class="form-success" id="booking-success">
-        <h3>Quote Request Received!</h3>
-        <p>Thank you for your interest in LuxLoo. We've received your request and will get back to you within 24 hours with a custom quote. If you need an immediate response, call us at <a href="tel:+18584267161">+1 (858) 426-7161</a>.</p>
+        <h3>Reservation Received!</h3>
+        <p>Thank you for choosing LuxLoo. We've received your event details and you'll be redirected to Stripe to complete your $350 deposit. Once payment is confirmed, your date is locked in and we'll follow up within 24 hours to finalize the details.</p>
+        <p style="margin-top:1rem;">Need an immediate response? Call us at <a href="tel:+18584267161">+1 (858) 426-7161</a>.</p>
       </div>
 
     </div>
@@ -152,7 +286,7 @@
           <ul>
             <li><a href="services.html">Our Trailer</a></li>
             <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="booking.html">Get a Quote</a></li>
+            <li><a href="booking.html">Reserve Your Date</a></li>
           </ul>
         </div>
         <div>
@@ -176,5 +310,135 @@
   </footer>
 
   <script src="js/script.js"></script>
+  <script>
+    /* ========================================
+       BOOKING CALCULATOR — LuxLoo
+       ========================================
+       SETUP REQUIRED:
+       1. Create a Stripe Payment Link for $350 (security deposit)
+          → https://dashboard.stripe.com/payment-links
+       2. Paste the URL below, replacing STRIPE_PAYMENT_LINK_URL
+       3. (Optional) In Stripe, set "After payment" → redirect to:
+          https://luxloorestrooms.com/booking.html?paid=true
+    ======================================== */
+    const STRIPE_PAYMENT_LINK = "STRIPE_PAYMENT_LINK_URL"; // ← REPLACE WITH YOUR STRIPE LINK
+
+    (function () {
+      const form = document.getElementById("booking-form");
+      if (!form) return;
+
+      const reserveBtn = document.getElementById("reserve-btn");
+      const successEl = document.getElementById("booking-success");
+      const baseEl = document.querySelector('[data-value="base"]');
+      const totalEl = document.querySelector('[data-value="total"]');
+      const balanceEl = document.querySelector('[data-value="balance"]');
+      const linePower = document.getElementById("line-power");
+      const lineWater = document.getElementById("line-water");
+      const lineAttendant = document.getElementById("line-attendant");
+      const hiddenTotal = document.getElementById("hidden-total");
+      const hiddenBreakdown = document.getElementById("hidden-breakdown");
+
+      const DEPOSIT = 350;
+      const fmt = (n) => "$" + n.toLocaleString("en-US");
+
+      function recalc() {
+        const duration = form.querySelector('input[name="duration"]:checked');
+        const power = form.querySelector('input[name="power"]:checked');
+        const water = form.querySelector('input[name="water"]:checked');
+        const attendant = form.querySelector('input[name="attendant"]:checked');
+
+        const base = duration ? parseInt(duration.dataset.price, 10) : 0;
+        const powerFee = power ? parseInt(power.dataset.price, 10) : 0;
+        const waterFee = water ? parseInt(water.dataset.price, 10) : 0;
+        const total = base + powerFee + waterFee;
+
+        baseEl.textContent = base ? fmt(base) : "—";
+        totalEl.textContent = fmt(total);
+        balanceEl.textContent = total > DEPOSIT ? fmt(total - DEPOSIT) : "$0";
+
+        linePower.style.display = powerFee > 0 ? "flex" : "none";
+        lineWater.style.display = waterFee > 0 ? "flex" : "none";
+        lineAttendant.style.display = attendant ? "flex" : "none";
+
+        // Build breakdown for Formspree email
+        const lines = [];
+        if (duration) lines.push(`Rental (${duration.value}): ${fmt(base)}`);
+        if (powerFee) lines.push(`Generator: +${fmt(powerFee)}`);
+        if (waterFee) lines.push(`Water tank: +${fmt(waterFee)}`);
+        if (attendant) lines.push(`Attendant service: quoted separately`);
+        lines.push(`TOTAL: ${fmt(total)}`);
+        lines.push(`Deposit paid today: ${fmt(DEPOSIT)}`);
+        lines.push(`Remaining balance: ${fmt(Math.max(0, total - DEPOSIT))}`);
+
+        hiddenTotal.value = fmt(total);
+        hiddenBreakdown.value = lines.join(" | ");
+
+        // Enable button only when all required radio groups are picked
+        reserveBtn.disabled = !(duration && power && water);
+      }
+
+      form.addEventListener("change", recalc);
+      recalc();
+
+      // Form submission: validate → send to Formspree → redirect to Stripe
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        // Clear previous errors
+        form.querySelectorAll(".form-group").forEach(g => g.classList.remove("error"));
+
+        let valid = true;
+        form.querySelectorAll("[required]").forEach(field => {
+          if (field.type === "radio") return; // handled separately
+          const group = field.closest(".form-group");
+          if (!field.value.trim() || (field.type === "email" && !/^\S+@\S+\.\S+$/.test(field.value))) {
+            if (group) group.classList.add("error");
+            valid = false;
+          }
+        });
+
+        // Validate radio groups
+        ["duration", "power", "water"].forEach(name => {
+          if (!form.querySelector(`input[name="${name}"]:checked`)) valid = false;
+        });
+
+        if (!valid) {
+          const firstError = form.querySelector(".form-group.error");
+          if (firstError) {
+            window.scrollTo({ top: firstError.offsetTop - 120, behavior: "smooth" });
+          }
+          return;
+        }
+
+        reserveBtn.disabled = true;
+        reserveBtn.textContent = "Processing…";
+
+        try {
+          // Send event details to LuxLoo via Formspree
+          const formData = new FormData(form);
+          await fetch("https://formspree.io/f/mgopbvqo", {
+            method: "POST",
+            body: formData,
+            headers: { Accept: "application/json" }
+          });
+
+          // Redirect to Stripe for $350 deposit
+          if (STRIPE_PAYMENT_LINK && STRIPE_PAYMENT_LINK !== "STRIPE_PAYMENT_LINK_URL") {
+            const email = encodeURIComponent(form.querySelector('[name="email"]').value);
+            window.location.href = `${STRIPE_PAYMENT_LINK}?prefilled_email=${email}`;
+          } else {
+            // Stripe link not yet configured — just show success
+            form.style.display = "none";
+            successEl.classList.add("active");
+            window.scrollTo({ top: successEl.offsetTop - 120, behavior: "smooth" });
+          }
+        } catch (err) {
+          reserveBtn.disabled = false;
+          reserveBtn.textContent = "Reserve Your Date — Pay $350 Deposit";
+          alert("There was an error submitting your reservation. Please call us at (858) 426-7161.");
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

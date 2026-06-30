@@ -215,7 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   setupForm("contact-form", "contact-success");
-  setupForm("booking-form", "booking-success");
+  // booking-form is handled by its own inline script in booking.html (calculator + Stripe redirect)
 
   // ---- Smooth scroll for anchor links ----
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {

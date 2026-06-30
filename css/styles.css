@@ -1131,3 +1131,130 @@ h4 { font-size: 1.2rem; }
     letter-spacing: 2px;
   }
 }
+
+/* ========================================
+   BOOKING CALCULATOR
+   ======================================== */
+.option-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+
+.option-card {
+  position: relative;
+  display: block;
+  padding: 18px 20px;
+  background: var(--bg-card);
+  border: 1px solid rgba(243, 202, 98, 0.2);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.option-card:hover {
+  border-color: var(--gold);
+  transform: translateY(-2px);
+}
+
+.option-card input[type="radio"],
+.option-card input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.option-card input:checked ~ .option-card-inner,
+.option-card.selected .option-card-inner {
+  color: var(--gold);
+}
+
+.option-card:has(input:checked) {
+  border-color: var(--gold);
+  background: rgba(243, 202, 98, 0.08);
+  box-shadow: 0 0 0 2px var(--gold-glow);
+}
+
+.option-card-title {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  color: var(--white);
+  margin-bottom: 4px;
+}
+
+.option-card-sub {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--gray);
+  margin-bottom: 10px;
+}
+
+.option-card-price {
+  display: block;
+  font-size: 1.15rem;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.price-summary {
+  background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%);
+  border: 2px solid var(--gold);
+  border-radius: 8px;
+  padding: 28px;
+  margin: 32px 0 24px;
+  box-shadow: 0 0 30px rgba(243, 202, 98, 0.1);
+}
+
+.price-summary h3 {
+  color: var(--gold);
+  font-size: 1.2rem;
+  margin-bottom: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.price-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  color: var(--white);
+  font-size: 0.95rem;
+}
+
+.price-line.muted {
+  color: var(--gray);
+  font-size: 0.85rem;
+}
+
+.price-line.total {
+  border-top: 1px solid rgba(243, 202, 98, 0.3);
+  margin-top: 12px;
+  padding-top: 16px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.price-line.deposit {
+  color: var(--gold);
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  margin-top: 8px;
+}
+
+.price-line.balance {
+  color: var(--gray);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+.price-note {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(243, 202, 98, 0.2);
+  font-size: 0.8rem;
+  color: var(--gray);
+  line-height: 1.5;
+}
